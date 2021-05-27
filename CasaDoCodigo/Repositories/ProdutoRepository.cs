@@ -32,8 +32,13 @@ namespace CasaDoCodigo.Repositories
             }
             _contexto.SaveChanges();
         }
-    }
 
+        public IList<Produto> GetProdutos()
+        {
+            return _contexto.Set<Produto>().ToList();
+        }
+    }
+    
     public class Livro
     {
         public string Codigo { get; set; }

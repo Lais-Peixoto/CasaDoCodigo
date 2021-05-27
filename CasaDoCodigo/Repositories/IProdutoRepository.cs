@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CasaDoCodigo.Models;
+using System.Collections.Generic;
 
 namespace CasaDoCodigo.Repositories
 {
@@ -6,5 +7,6 @@ namespace CasaDoCodigo.Repositories
     {
         void SaveProdutos(List<Livro> livros);
         List<Livro> GetLivros();
+        IList<Produto> GetProdutos();
     }
 }
