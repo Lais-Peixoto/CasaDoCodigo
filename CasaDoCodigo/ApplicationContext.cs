@@ -21,7 +21,8 @@ namespace CasaDoCodigo
 
             modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
             modelBuilder.Entity<Pedido>().HasMany(t => t.Itens).WithOne(t => t.Pedido);
-            modelBuilder.Entity<Pedido>().HasOne(t => t.Cadastro).WithOne(t => t.Pedido).IsRequired();
+            //modelBuilder.Entity<Pedido>().HasOne(t => t.Cadastro).WithOne(t => t.Pedido).IsRequired();
+            modelBuilder.Entity<Pedido>().HasOne(t => t.Cadastro).WithOne(t => t.Pedido).HasForeignKey<Pedido>(t => t.CadastroId).IsRequired();
 
             modelBuilder.Entity<ItemPedido>().HasKey(t => t.Id);
             modelBuilder.Entity<ItemPedido>().HasOne(t => t.Pedido);
@@ -29,7 +30,6 @@ namespace CasaDoCodigo
 
             modelBuilder.Entity<Cadastro>().HasKey(t => t.Id);
             modelBuilder.Entity<Cadastro>().HasOne(t => t.Pedido);
-
         }
     }
 }
