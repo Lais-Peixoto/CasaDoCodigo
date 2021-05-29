@@ -28,6 +28,7 @@ namespace CasaDoCodigo.Repositories
                 pedido = new Pedido();
                 _dbSet.Add(pedido);
                 _contexto.SaveChanges();
+                SetPedidoId(pedido.Id);
             }
 
             return pedido;
