@@ -30,8 +30,33 @@ namespace CasaDoCodigo.Repositories
                 _contexto.SaveChanges();
                 SetPedidoId(pedido.Id);
             }
-
             return pedido;
+        }
+
+        public void AddItem(string codigo)
+        {
+            var produto = _contexto.Set<Produto>()
+                .Where(p => p.Codigo == codigo)
+                .SingleOrDefault();
+
+            if (produto == null)
+            {
+                throw new ArgumentException("Produto não encontrado.");
+            }
+
+            var pedido = GetPedido();
+
+            var itemPedido = _contexto.Set<ItemPedido>()
+                .Where(i => i.Produto.Codigo == codigo
+                && i.Pedido.Id == pedido.Id)
+                .SingleOrDefault();
+
+            if (itemPedido == null)
+            {
+                itemPedido = new ItemPedido(pedido, produto, 1, produto.Preco);
+                _contexto.Set<ItemPedido>().Add(itemPedido);
+                _contexto.SaveChanges();
+            }
         }
 
         // método para obter o id do pedido que será armazenado na sessão
