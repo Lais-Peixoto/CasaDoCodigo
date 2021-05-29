@@ -46,6 +46,9 @@ namespace CasaDoCodigo
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IItemPedidoRepository, ItemPedidoRepository>();
             services.AddTransient<ICadastroRepository, CadastroRepository>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +64,9 @@ namespace CasaDoCodigo
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
+
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
