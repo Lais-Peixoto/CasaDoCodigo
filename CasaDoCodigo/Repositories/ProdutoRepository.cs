@@ -9,15 +9,10 @@ using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Repositories
 {
-    public class ProdutoRepository : IProdutoRepository
+    public class ProdutoRepository : BaseRepository<Produto>, IProdutoRepository
     {
-        private readonly ApplicationContext _contexto;
-        private readonly DbSet<Produto> _dbSet;
-
-        public ProdutoRepository(ApplicationContext contexto)
+        public ProdutoRepository(ApplicationContext contexto) : base(contexto)
         {
-            _contexto = contexto;
-            _dbSet = _contexto.Set<Produto>();
         }
 
         public List<Livro> GetLivros()
