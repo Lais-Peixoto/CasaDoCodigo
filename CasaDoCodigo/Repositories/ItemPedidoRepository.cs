@@ -18,7 +18,7 @@ namespace CasaDoCodigo.Repositories
 
             if (itemPedidoDB != null)
             {
-                itemPedidoDB.AtualizaQuantidade(itemPedido.Quantidade);
+                itemPedidoDB.AtualizaQuantidade(itemPedido.Quantidade); // foi necessario criar esse método para modificar o setter privado
                 _contexto.SaveChanges();
             }
         }
