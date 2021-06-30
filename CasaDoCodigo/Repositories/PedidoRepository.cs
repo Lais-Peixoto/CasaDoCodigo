@@ -84,6 +84,12 @@ namespace CasaDoCodigo.Repositories
             if (itemPedidoDB != null)
             {
                 itemPedidoDB.AtualizaQuantidade(itemPedido.Quantidade); // foi necessario criar esse método para modificar o setter privado
+
+                if (itemPedido.Quantidade == 0)
+                {
+                    _itemPedidoRepository.RemoveItemPedido(itemPedido.Id);
+                }
+                
                 _contexto.SaveChanges();
 
                 var carrinhoViewModel = new CarrinhoViewModel(GetPedido().Itens);
