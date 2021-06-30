@@ -13,13 +13,11 @@ namespace CasaDoCodigo.Controllers
     {
         private readonly IProdutoRepository _produtoRepository;
         private readonly IPedidoRepository _pedidoRepository;
-        private readonly IItemPedidoRepository _itemPedidoRepository;
 
-        public PedidoController(IProdutoRepository produtoRepository, IPedidoRepository pedidoRepository, IItemPedidoRepository itemPedidoRepository)
+        public PedidoController(IProdutoRepository produtoRepository, IPedidoRepository pedidoRepository)
         {
             _produtoRepository = produtoRepository;
             _pedidoRepository = pedidoRepository;
-            _itemPedidoRepository = itemPedidoRepository;
         }
 
         public IActionResult Carrossel()
