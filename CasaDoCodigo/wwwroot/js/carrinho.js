@@ -15,16 +15,20 @@ class Carrinho {
         this.sendQuantidade(dado);
     }
 
+    updateQuantidade(input) {
+        let dado = this.getDados(input);
+        this.sendQuantidade(dado);
+    }
+
     getDados(elementoHTML) {
         var linhaDoItem = $(elementoHTML).parents("[item-id]");
         var itemId = $(linhaDoItem).attr("item-id");
         var novaQtde = $(linhaDoItem).find("input").val();
 
-        return dados = {
+        return {
             Id: itemId,
             Quantidade: novaQtde
         };
-
     }
 
     sendQuantidade(dados) {
