@@ -37,7 +37,11 @@ class Carrinho {
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(dados),
-        });
+        }).done(
+            function (response) {
+                
+            }
+        );
     }
 }
 

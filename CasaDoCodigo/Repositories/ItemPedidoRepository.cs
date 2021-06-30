@@ -12,15 +12,9 @@ namespace CasaDoCodigo.Repositories
         {
         }
 
-        public void UpdateQuantidade(ItemPedido itemPedido)
+        public ItemPedido GetItemPedido(int itemPedidoId)
         {
-           var itemPedidoDB = _dbSet.Where(i => i.Id == itemPedido.Id).SingleOrDefault();
-
-            if (itemPedidoDB != null)
-            {
-                itemPedidoDB.AtualizaQuantidade(itemPedido.Quantidade); // foi necessario criar esse método para modificar o setter privado
-                _contexto.SaveChanges();
-            }
+            return _dbSet.Where(i => i.Id == itemPedidoId).SingleOrDefault();
         }
     }
 }

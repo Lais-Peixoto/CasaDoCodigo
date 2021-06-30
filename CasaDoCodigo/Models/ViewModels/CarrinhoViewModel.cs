@@ -17,4 +17,4 @@ namespace CasaDoCodigo.Models.ViewModels
 		public decimal Total => Itens.Sum(i => i.Quantidade * i.PrecoUnitario);
 	}
 }
-}
+
