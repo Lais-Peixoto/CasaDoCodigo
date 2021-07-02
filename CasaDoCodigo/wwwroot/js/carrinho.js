@@ -32,11 +32,17 @@ class Carrinho {
     }
 
     sendQuantidade(dados) {
+
+        let token = $('[name=__RequestVerificationToken]').val();
+        let headers = {};
+        headers['RequestVerificationToken'] = token;
+
         $.ajax({
             url: "/pedido/updatequantidade",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(dados),
+            headers: headers
         }).done(
             function (response) {
                 let itemPedido = response.itemPedido;
