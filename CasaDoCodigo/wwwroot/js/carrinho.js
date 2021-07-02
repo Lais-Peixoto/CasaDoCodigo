@@ -3,14 +3,14 @@
 
 class Carrinho {
 
-    cliqueIncremento(btn) {
-        let dado = this.getDados(btn);
+    cliqueIncremento(botao) {
+        let dado = this.getDados(botao);
         dado.Quantidade++;
         this.sendQuantidade(dado);
     }
 
-    cliqueDecremento(btn) {
-        let dado = this.getDados(btn);
+    cliqueDecremento(botao) {
+        let dado = this.getDados(botao);
         dado.Quantidade--;
         this.sendQuantidade(dado);
     }
@@ -23,15 +23,17 @@ class Carrinho {
     getDados(elementoHTML) {
         var linhaDoItem = $(elementoHTML).parents("[item-id]");
         var itemId = $(linhaDoItem).attr("item-id");
-        var novaQtde = $(linhaDoItem).find("input").val();
+        var novaQuantidade = $(linhaDoItem).find("input").val();
 
         return {
             Id: itemId,
-            Quantidade: novaQtde
+            Quantidade: novaQuantidade
         };
     }
 
     sendQuantidade(dados) {
+
+        /*o token deve ser fornecido como um valor do cabeçalho (headers)*/
 
         let token = $('[name=__RequestVerificationToken]').val();
         let headers = {};
